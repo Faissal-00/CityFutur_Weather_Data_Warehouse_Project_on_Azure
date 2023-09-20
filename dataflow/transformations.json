@@ -1,0 +1,98 @@
+{
+	"name": "transformations",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "weathermetrics",
+						"type": "DatasetReference"
+					},
+					"name": "weathermetrics"
+				},
+				{
+					"dataset": {
+						"referenceName": "regiondim",
+						"type": "DatasetReference"
+					},
+					"name": "regiondim"
+				},
+				{
+					"dataset": {
+						"referenceName": "datedim",
+						"type": "DatasetReference"
+					},
+					"name": "datedim"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "cleanedweathermetrics",
+						"type": "DatasetReference"
+					},
+					"name": "cleanedweathermetrics"
+				},
+				{
+					"dataset": {
+						"referenceName": "cleanedregiondim",
+						"type": "DatasetReference"
+					},
+					"name": "cleanedregiondim"
+				},
+				{
+					"dataset": {
+						"referenceName": "cleaneddatedim",
+						"type": "DatasetReference"
+					},
+					"name": "cleaneddatedim"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          DateID as string,",
+				"          RegionID as string,",
+				"          AverageTemperature as string,",
+				"          Humidity as string,",
+				"          WindSpeed as string,",
+				"          Rainfall as string,",
+				"          SunshineHours as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> weathermetrics",
+				"source(output(",
+				"          RegionID as integer,",
+				"          RegionName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> regiondim",
+				"source(output(",
+				"          DateID as integer,",
+				"          Date as date 'yyyy-MM-dd'",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> datedim",
+				"weathermetrics sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['cleanedweathermetrics'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> cleanedweathermetrics",
+				"regiondim sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['cleanedregiondim'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> cleanedregiondim",
+				"datedim sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['cleaneddatedim'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> cleaneddatedim"
+			]
+		}
+	}
+}

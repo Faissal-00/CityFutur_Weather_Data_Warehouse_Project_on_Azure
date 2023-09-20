@@ -1,0 +1,9 @@
+{
+	"name": "faissalmouflla",
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8c910644-83c2-412c-9a7c-a6a7a2716fed",
+		"tenantId": "a2e466aa-4f86-4545-b5b8-97da7c8febf3"
+	}
+}

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "transformations",
+				"name": "Transformations",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "transformations",
+						"referenceName": "Transformations",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "-- Change the 'DateID' column to non-nullable\nALTER TABLE DateDim\nALTER COLUMN DateID INT NOT NULL;\n\n-- Add the primary key constraint\nALTER TABLE DateDim\nADD CONSTRAINT PK_DateDim PRIMARY KEY NONCLUSTERED (DateID) NOT ENFORCED;\n\n-- Change the 'RegionID' column to non-nullable\nALTER TABLE RegionDim\nALTER COLUMN RegionID INT NOT NULL;\n\n-- Add the primary key constraint\nALTER TABLE RegionDim\nADD CONSTRAINT PK_RegionDim PRIMARY KEY NONCLUSTERED (RegionID) NOT ENFORCED;\n\n-- Change the 'weatherID' column to non-nullable\nALTER TABLE WeatherMetricsFact\nALTER COLUMN weatherID INT NOT NULL;\n\n-- Add the primary key constraint\nALTER TABLE WeatherMetricsFact\nADD CONSTRAINT PK_WeatherMetricsFact PRIMARY KEY NONCLUSTERED (weatherID) NOT ENFORCED;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "faissalmoufllapool",
+				"poolName": "faissalmoufllapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

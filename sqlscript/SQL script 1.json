@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "-- Change the data types\nALTER TABLE DateDim\nALTER COLUMN DateID INT;\n\nALTER TABLE DateDim\nALTER COLUMN Date DATE;\n\nALTER TABLE RegionDim\nALTER COLUMN RegionID INT;\n\nALTER TABLE WeathermetricsFact\nALTER COLUMN DateID INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN RegionID INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN AverageTemperature INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN Humidity INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN WindSpeed INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN Rainfall INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN SunshineHours INT;\nALTER TABLE WeathermetricsFact\nALTER COLUMN weatherID INT;\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "faissalmoufllapool",
+				"poolName": "faissalmoufllapool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

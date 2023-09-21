@@ -1,0 +1,16 @@
+{
+	"name": "loadregiondim",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "RegionDim"
+		},
+		"sqlPool": {
+			"referenceName": "faissalmoufllapool",
+			"type": "SqlPoolReference"
+		}
+	}
+}

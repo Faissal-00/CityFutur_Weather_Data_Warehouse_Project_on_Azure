@@ -52,6 +52,9 @@
 			"transformations": [
 				{
 					"name": "surrogateKey1"
+				},
+				{
+					"name": "SCD"
 				}
 			],
 			"scriptLines": [
@@ -84,12 +87,13 @@
 				"weathermetrics keyGenerate(output(weatherID as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
+				"regiondim alterRow(upsertIf(1 == 1)) ~> SCD",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['cleanedweathermetrics'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> saveweathermetrics",
-				"regiondim sink(allowSchemaDrift: true,",
+				"SCD sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['cleanedregiondim'],",
 				"     skipDuplicateMapInputs: true,",
